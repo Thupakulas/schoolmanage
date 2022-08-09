@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <form action="" method="post" id="regform">
+        <div class="mb-3 mt-3">
+            <label for="Username" class="form-label">Name:</label>
+            <input type="text" class="form-control" id="username" name="username" placeholder="Enter username">
+        </div>
+        <div class="mb-3 mt-3">
+            <label for="rollno" class="form-label">Roll No:</label>
+            <input type="text" class="form-control" id="rollno" placeholder="Enter rollno" name="rollno">
+        </div>
+        <div class="mb-3">
+            <label for="class" class="form-label">class:</label>
+            <input type="text" class="form-control" id="class" placeholder="Enter class" name="class">
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password:</label>
+            <input type="password" class="form-control" id="password" placeholder="Enter password" name="password">
+        </div>
+
+
+        <button type="submit" name="registerbtn" id="registerbtn" class="btn btn-primary">Submit</button>
+    </form>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#registerbtn").click(function () {
+
+                      var username= $('#username').val();
+                      var rollno= $('#rollno').val();
+                      var classname= $('#class').val() ;
+                        var password= $('#password').val();
+
+                       var datapost= { 
+                       "username" : username,
+                        "rollno": rollno,
+                        "classname":classname,
+                        "password": password
+                     };
+
+                $.ajax('post.php', {
+                    type: 'POST', 
+                     // http method
+                     contentType: "application/json; charset=utf-8",
+                     data:JSON.stringify(datapost),
+                   // data to submit
+                    success: function (data, status, xhr) {
+                    alert('in success ' + data);
+                    },
+                    error: function (jqXhr, textStatus, errorMessage) {
+                     alert(errorMessage);
+                    }
+                });
+
+            });
+        });
+    </script>
+    <script>
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>

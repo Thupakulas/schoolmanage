@@ -18,7 +18,7 @@ if(isset($_POST['registerbtn'])){
 
         if($register){
            // echo 'reg success';
-           header('location:login.php');
+         //  header('location:login.php');
 
           //  echo '<script>alert("registered successfully")</script>';
           //  usleep(50000);
@@ -44,6 +44,8 @@ if(isset($_POST['registerbtn'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Attendance</title>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
     <!-- Latest compiled and minified CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -58,7 +60,7 @@ if(isset($_POST['registerbtn'])){
         <div class="col-md-2"></div>
         <div class="col-md-8">
             
-<form action="" method="post">
+<form action="" method="post" id="regform">
 <div class="mb-3 mt-3">
     <label for="Username" class="form-label">Name:</label>
     <input type="text" class="form-control" id="name" name="username" placeholder="Enter username">
@@ -77,13 +79,48 @@ if(isset($_POST['registerbtn'])){
   </div>
  
 
-  <button type="submit" name="registerbtn" class="btn btn-primary">Submit</button>
+  <button type="submit" name="registerbtn" id="registerbtn" class="btn btn-primary">Submit</button>
 </form>
 Click here to login<a href="login.php">  Login</a>
     
         </div>
         <div class="col-md-2"></div>
     </div>
+
+
+   
 </div>
+
+<!-- <script>
+
+
+$(document).ready(function(){
+
+  function jsondata(regform){
+    
+    var array=$("#regform").serializeArray();
+  
+   var obj={};
+  for(a=0;a<array.length;a++){
+    obj[array[a].name]=array[a].value;
+  }
+
+
+
+  var jstring=JSON.stringify(obj);
+
+
+  return jstring;
+
+  }
+
+  $("#registerbtn").on("click",function(e){
+    e.preventDefault();
+
+var objstring=jsondata
+ 
+  })
+})
+  </script> -->
 </body>
 </html>
